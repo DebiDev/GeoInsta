@@ -43,10 +43,14 @@ myApp.service('Map', function($q) {
     
 });
 
-myApp.controller('newPlaceCtrl', function($scope, Map) {
+myApp.controller('newPlaceCtrl', function($scope, Map, Auth) {
     
     $scope.place = {};
     
+	$scope.auth.$onAuthStateChanged(function(firebaseUser) {
+    	$scope.firebaseUser = firebaseUser;
+    });
+	
     $scope.search = function() {
         $scope.apiError = false;
         Map.search($scope.searchPlace)
@@ -79,6 +83,11 @@ myApp.controller("detectUserCtrl", ["$scope", "Auth",
     $scope.auth.$onAuthStateChanged(function(firebaseUser) {
       $scope.firebaseUser = firebaseUser;
     });
+	  
+	$scope.signOut = function() {
+    	$scope.auth.$signOut();
+    	$state.go("home");
+    }
   }
 ]);
 

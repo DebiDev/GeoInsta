@@ -14,5 +14,15 @@ myApp.controller("HomeController", ["$scope","$state", "Auth",
     $scope.goToLogin = function() {
     	$state.go("login");
     }
+	
+	$scope.signOut = function() {
+    	$scope.auth.$signOut();
+    	$state.go("home");
+    }
+
+    $scope.goToMainpage = function() {
+    	$state.go("mainpage");
+    }
+	
   }
 ]);

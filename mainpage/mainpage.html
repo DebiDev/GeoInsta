@@ -1,13 +1,12 @@
 <div class="w3-margin" ng-controller="MainpageController">
-
-  <h1>Maps</h1>
-  <button ng-click="signOut()">Se déconnecter</button>
-
-  <div id="map" style="width: 500px; height: 500px;"></div>
+  <h1>Carte des photos autour de moi</h1>
+  <button ng-click="getLocation()">Me géolocaliser</button>
+	
+  <div id="map" style="width: auto; height: 500px;"></div>
 	<div id="repeat" ng-repeat="marker in markers | orderBy : 'title'">
 	     <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)">
 	     <label id="names" >{{marker.title}}</label></a>
 	</div>
 
-	<button ng-click="getLocation()">Me géolocaliser</button>
+
 </div>
