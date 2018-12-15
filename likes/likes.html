@@ -1,0 +1,12 @@
+<div class="w3-margin" ng-controller="LikesController">
+
+	<div class="container"> 
+		<div class="row"> 
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-repeat="(key, value) in pictures">
+				<img style="z-index: 10;margin: 10px" class="img-responsive" src={{value.url}} alt="">
+				<button style=" margin-right: 0px;position: absolute; z-index: 100; margin-top: -35px" class="btn btn-danger" type="button" class="btn btn-danger" ng-click="pictures.$remove(value)">Dislike</button>
+			</div>
+		</div>
+	</div>
+
+</div>

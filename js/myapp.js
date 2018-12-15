@@ -75,21 +75,40 @@ myApp.controller('newPlaceCtrl', function($scope, Map, Auth) {
     Map.init();
 });
 
-myApp.controller("detectUserCtrl", ["$scope", "Auth",
-  function($scope, Auth) {
+myApp.controller("NavBarController", ["$scope", "Auth", "$state",
+  function($scope, Auth, $state) {
     $scope.auth = Auth;
 
     // any time auth state changes, add the user data to scope
     $scope.auth.$onAuthStateChanged(function(firebaseUser) {
       $scope.firebaseUser = firebaseUser;
     });
-	  
-	$scope.signOut = function() {
-    	$scope.auth.$signOut();
-    	$state.go("home");
+
+    $scope.goToHome = function() {
+      $state.go("home");
     }
-  }
-]);
+
+    $scope.goToSignin = function() {
+      $state.go("signin");
+    }
+
+    $scope.goToLogin = function() {
+      $state.go("login");
+    }
+  
+    $scope.signOut = function() {
+      $scope.auth.$signOut();
+      $state.go("home");
+    }
+
+    $scope.goToMainpage = function() {
+      $state.go("mainpage");
+    }
+
+    $scope.goToLikespage = function() {
+      $state.go('likes');
+    }
+}]);
 
 myApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -119,6 +138,11 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     .state('page2', {
        url: '/page2',
        templateUrl: 'page2/page2.html'
+    })
+
+    .state('likes', {
+      url: '/likes',
+      templateUrl: 'likes/likes.html'
     });
 
     $urlRouterProvider.otherwise('home');

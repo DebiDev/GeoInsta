@@ -23,6 +23,10 @@ myApp.controller("HomeController", ["$scope","$state", "Auth",
     $scope.goToMainpage = function() {
     	$state.go("mainpage");
     }
+
+    $scope.goToLikespage = function() {
+    	$state.go('likes');
+    }
 	
   }
 ]);

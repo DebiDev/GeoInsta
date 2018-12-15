@@ -18,23 +18,30 @@
 <![endif]-->
   </head>
 
-  <body style="padding-top: 70px" ng-app="myApp">
+  <body style="padding-top: 70px;  background-color: #fafafa" ng-app="myApp">
     <!-- header
     ––––––––––––––––––––––––––––––––––––––––––––––––––-->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
-        <div class="navbar-header">
-		  <a class="navbar-brand" href="#"><img src="images/48319970_334162560647815_5111423545129304064_n.png" alt="" width="20" height="25" /></a>
-		  <a class="navbar-brand" href="#" font-family="Honeymoon Personnal Use" >GeoInsta</a>
+        <div class="navbar-header" ng-controller="NavBarController">
+		  <a class="navbar-brand" href=""><img src="images/48319970_334162560647815_5111423545129304064_n.png" alt="" width="20" height="25" /></a>
+		  <a class="navbar-brand" href="" ng-click="goToHome()" font-family="Honeymoon Personnal Use" >GeoInsta</a>
+          <a style="position: absolute; left: 40%;" class="navbar-brand" href="" font-family="Honeymoon Personnal Use"  ng-click="goToMainpage()" ng-if="firebaseUser">Accueil</a>
+          <a style="position: absolute; left: 55%;" class="navbar-brand" href="" font-family="Honeymoon Personnal Use"  ng-click="goToLikespage()" ng-if="firebaseUser">Mes likes</a>
+          <div style="position: absolute; right: 20px;">
+              <button style="margin-top: 10px; margin-left: 5px;" type="button" class="btn btn-sm btn-primary navbar-right" ng-click="goToLogin()" ng-if="!firebaseUser">Se connecter</button>
+              <button style="margin-top: 10px;" type="button" class="btn btn-sm btn-secondary navbar-right" ng-click="goToSignin()" ng-if="!firebaseUser">S'inscrire</button>
+          </div>
+          <button style="margin-top: 10px; position: absolute; right: 20px;" type="button" class="btn btn-sm btn-secondary navbar-right" ng-click="signOut()" ng-if="firebaseUser">Se déconnecter</button>
 		</div>
-		<div class="navbar-nav navbar-center" ng-controller="HomeController">
-			<a class="navbar-brand" href="#" font-family="Honeymoon Personnal Use"  ng-click="goToMainpage()" ng-if="firebaseUser">Accueil</a>
+		<!-- <div class="navbar-nav navbar-center" ng-controller="HomeController">
+			<a class="navbar-brand" href="" font-family="Honeymoon Personnal Use"  ng-click="goToMainpage()" ng-if="firebaseUser">Accueil</a>
 		</div>
         <div class="navbar-right navbar-text" ng-controller="HomeController">
 			<button type="button" class="btn btn-sm btn-primary" ng-click="goToLogin()" ng-if="!firebaseUser">Se connecter</button>
 			<button type="button" class="btn btn-sm btn-secondary" ng-click="goToSignin()" ng-if="!firebaseUser">S'inscrire</button>
 			<button type="button" class="btn btn-sm btn-secondary" ng-click="signOut()" ng-if="firebaseUser">Se déconnecter</button>
-        </div>
+        </div> -->
       </div>
   </nav>
 <!-- dynamic content placeholder
@@ -79,8 +86,9 @@
     <script src="login/logincontroller.js"></script>
     <script src="signin/signincontroller.js"></script>
     <script src="mainpage/mainpagecontroller.js"></script>
-	<script src="../js/jquery-1.11.3.min.js"></script>
-	<script src="../js/bootstrap.js"></script>
+    <script src="likes/likescontroller.js"></script>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 
 	  <form>
 		  
